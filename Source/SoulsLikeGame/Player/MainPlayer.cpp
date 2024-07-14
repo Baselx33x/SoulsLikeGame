@@ -22,6 +22,15 @@ void AMainPlayer::InitVariables()
 	m_Camera->SetupAttachment(m_SpringArm);
 }
 
+FVector AMainPlayer::GetLookDirection(EAxis::Type Axis)
+{
+	FRotator Rotation = Controller->GetControlRotation();
+	FRotator YawRotation(0.0f, Rotation.Yaw, 0.0f);
+	FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(Axis);
+
+	return Direction;
+}
+
 
 void AMainPlayer::BeginPlay()
 {
@@ -54,8 +63,13 @@ void AMainPlayer::MoveForward(float Value)
 {
 	if (Controller || Value != 0.0f)
 	{
-		FVector Forward = GetActorForwardVector();
+		/*FVector Forward = GetActorForwardVector();
+		AddMovementInput(Forward, Value);*/
+
+
+		FVector Forward = GetLookDirection(EAxis::X);
 		AddMovementInput(Forward, Value);
+
 	}
 }
 
@@ -63,8 +77,13 @@ void AMainPlayer::MoveRight(float Value)
 {
 	if (Controller || Value != 0.0f)
 	{
-		FVector Right = GetActorRightVector();
+	/*	FVector Right = GetActorRightVector();
+		AddMovementInput(Right, Value);*/
+
+
+		FVector Right = GetLookDirection(EAxis::Y);
 		AddMovementInput(Right, Value);
+
 	}
 
 }

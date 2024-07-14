@@ -36,8 +36,7 @@ protected :
 
 private : 
 	void InitVariables();
-
-
+	FVector GetLookDirection(EAxis::Type Axis);
 private : 
 
 	UPROPERTY(VisibleDefaultsOnly , Category = "Camera")
