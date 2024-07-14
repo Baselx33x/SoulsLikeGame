@@ -32,6 +32,8 @@ protected :
 	void LookUp(float Value);
 	void LookRight(float Value);
 
+
+
 private : 
 	void InitVariables();
 

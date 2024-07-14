@@ -2,6 +2,7 @@
 #include "MainPlayer.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/Character.h"
 
 AMainPlayer::AMainPlayer()
 {
@@ -43,6 +44,10 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &AMainPlayer::LookUp);
 	PlayerInputComponent->BindAxis(TEXT("LookRight"), this, &AMainPlayer::LookRight);
 
+
+	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
+
+
 }
 
 void AMainPlayer::MoveForward(float Value)
@@ -73,6 +78,7 @@ void AMainPlayer::LookRight(float Value)
 {
 	AddControllerYawInput(Value);
 }
+
 
 
 
