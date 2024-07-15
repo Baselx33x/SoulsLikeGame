@@ -9,11 +9,10 @@ void UPlayerAnimInstance::NativeInitializeAnimation()
 {
 	Super::NativeInitializeAnimation();
 
+	m_Player = Cast<AMainPlayer>(TryGetPawnOwner());
 
 	if (m_Player)
 	{
-		m_Player = Cast<AMainPlayer>(TryGetPawnOwner());
-
 		m_CharacterMovementComp = m_Player->GetCharacterMovement();
 	}
 
@@ -33,6 +32,8 @@ void UPlayerAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 		m_Direction = CalculateDirection(m_CharacterMovementComp->Velocity,
 										GetOwningActor()->GetActorRotation());
+
+
 	}
 
 }
