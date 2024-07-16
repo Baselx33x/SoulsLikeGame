@@ -24,4 +24,10 @@ class SOULSLIKEGAME_API AAxe : public AWeapon
 		, UPrimitiveComponent* OtherComp
 		, int32 OtherBodyIndex) override;
 
+
+	
+
+	// Inherited via IIPickable
+	void PickUP() override;
+
 };

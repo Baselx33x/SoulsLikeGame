@@ -3,6 +3,9 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
+#include "SoulsLikeGame/Interfaces/IPickable.h"
+#include "Components/CapsuleComponent.h"
+
 
 AMainPlayer::AMainPlayer()
 {
@@ -20,6 +23,8 @@ void AMainPlayer::InitVariables()
 
 	m_Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	m_Camera->SetupAttachment(m_SpringArm);
+
+	GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AMainPlayer::BeginOverlap);
 }
 
 FVector AMainPlayer::GetLookDirection(EAxis::Type Axis)
@@ -96,6 +101,23 @@ void AMainPlayer::LookUp(float Value)
 void AMainPlayer::LookRight(float Value)
 {
 	AddControllerYawInput(Value);
+}
+
+void AMainPlayer::PickUp()
+{
+	
+
+
+}
+
+void AMainPlayer::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	IIPickable* Pickable = Cast<IIPickable>(OtherActor);
+
+	if (Pickable)
+	{
+		Pickable->PickUP();
+	}
 }
 
 
