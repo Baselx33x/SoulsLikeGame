@@ -10,4 +10,7 @@ class SOULSLIKEGAME_API AWeapon : public AIteam
 {
 	GENERATED_BODY()
 	
+
+protected:
+	bool m_B_IsCollided = false;
 };
