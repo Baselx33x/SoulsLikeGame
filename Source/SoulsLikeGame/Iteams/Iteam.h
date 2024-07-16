@@ -38,6 +38,10 @@ protected:
 	 , UPrimitiveComponent* OtherComp
 	 , int32 OtherBodyIndex);
 
+public:
+	FORCEINLINE UStaticMeshComponent* GetIteamMesh() { return m_IteamMesh; }
+	FORCEINLINE USphereComponent* GetSphereCollision() { return m_SphereCollision; }
+
 protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Inisilization")

@@ -1,6 +1,8 @@
 
 #include "IPickable.h"
 
-void IIPickable::PickUP()
+
+AIteam* IIPickable::PickUP(USceneComponent* Component, FName Socket )
 {
+	return nullptr;
 }

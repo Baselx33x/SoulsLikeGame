@@ -28,11 +28,19 @@ void AAxe::EndOverLap(UPrimitiveComponent* OverlappedComponent
 
 }
 
-void AAxe::PickUP()
+AIteam* AAxe::PickUP(USceneComponent* Component, FName Socket )
 {
+
 	if (GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, TEXT(" Axe PickUP"));
 	}
+	FAttachmentTransformRules AttachRules(EAttachmentRule::SnapToTarget
+		, EAttachmentRule::SnapToTarget
+		, EAttachmentRule::SnapToTarget
+		,true);
 
+	m_IteamMesh->AttachToComponent(Component, AttachRules, Socket);
+	return this;
 }
+

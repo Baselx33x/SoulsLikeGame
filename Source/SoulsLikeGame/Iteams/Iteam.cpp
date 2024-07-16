@@ -47,12 +47,12 @@ void AIteam::EndOverLap(UPrimitiveComponent* OverlappedComponent, AActor* OtherA
 
 void AIteam::Init()
 {
-	m_SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("SphereCollision"));
-	m_SphereCollision->SetupAttachment(RootComponent);
 
 	m_IteamMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("IteamMesh"));
-	m_IteamMesh->SetupAttachment(m_SphereCollision);
+	m_IteamMesh->SetupAttachment(RootComponent);
 
+	m_SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("SphereCollision"));
+	m_SphereCollision->SetupAttachment(m_IteamMesh);
 
 	m_SphereCollision->OnComponentBeginOverlap.AddDynamic(this, &AIteam::BeginOverlap);
 	m_SphereCollision->OnComponentEndOverlap.AddDynamic(this, &AIteam::EndOverLap);

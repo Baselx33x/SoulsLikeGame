@@ -8,7 +8,7 @@
 
 	class USpringArmComponent; 
 	class UCameraComponent;
-
+	class AIteam;
 
 UCLASS()
 class SOULSLIKEGAME_API AMainPlayer : public ACharacter
@@ -42,6 +42,9 @@ protected :
 		, bool bFromSweep
 		, const FHitResult& SweepResult);
 
+public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly , Category = "Initialization")
+	TArray< AIteam* > m_Iteams;
 
 private : 
 	void InitVariables();
@@ -53,5 +56,6 @@ private :
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Camera")
 	UCameraComponent * m_Camera;
+
 };
 

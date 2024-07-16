@@ -5,6 +5,8 @@
 #include "GameFramework/Character.h"
 #include "SoulsLikeGame/Interfaces/IPickable.h"
 #include "Components/CapsuleComponent.h"
+#include "SoulsLikeGame/Iteams/Iteam.h"
+#include "Components/SphereComponent.h"
 
 
 AMainPlayer::AMainPlayer()
@@ -60,6 +62,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction(TEXT("PichUp"), EInputEvent::IE_Pressed, this, &AMainPlayer::PickUp);
 
 
 }
@@ -106,6 +109,19 @@ void AMainPlayer::LookRight(float Value)
 void AMainPlayer::PickUp()
 {
 	
+	if (m_Iteams.Num() != 0)
+	{
+		AIteam* Iteam = m_Iteams[0];
+		if (Iteam)
+		{
+			Iteam->GetSphereCollision()->SetSimulatePhysics(true);
+			
+		}
+	
+		m_Iteams.RemoveAt(0);
+		
+		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Dropped Iteam");
+	}
 
 
 }
@@ -116,7 +132,9 @@ void AMainPlayer::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor*
 
 	if (Pickable)
 	{
-		Pickable->PickUP();
+		AIteam* Iteam = Pickable->PickUP( GetMesh() , "RightHandSocket");
+
+		m_Iteams.Add(Iteam);
 	}
 }
 

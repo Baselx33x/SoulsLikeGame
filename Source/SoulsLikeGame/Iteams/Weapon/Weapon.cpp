@@ -1,7 +1,8 @@
 
 #include "Weapon.h"
 
-void AWeapon::PickUP()
-{
 
+AIteam* AWeapon::PickUP(USceneComponent* Component, FName Socket)
+{
+	return this;
 }

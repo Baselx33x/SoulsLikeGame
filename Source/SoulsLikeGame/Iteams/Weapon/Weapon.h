@@ -17,6 +17,6 @@ protected:
 
 
 	// Inherited via IIPickable
-	void PickUP() override;
+	 AIteam* PickUP(USceneComponent* Component, FName Socket)override;
 
 };

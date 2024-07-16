@@ -3,6 +3,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
+#include "SoulsLikeGame/Iteams/Iteam.h"
 #include "IPickable.generated.h"
 
 
@@ -21,5 +22,5 @@ class SOULSLIKEGAME_API IIPickable
 
 public:
 
-	virtual void PickUP() = 0; 
+	virtual AIteam* PickUP(USceneComponent* Component , FName Socket ) = 0;
 };
