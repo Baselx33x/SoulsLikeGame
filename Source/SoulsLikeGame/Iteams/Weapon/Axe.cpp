@@ -41,8 +41,10 @@ AIteam* AAxe::PickUP(USceneComponent* Component, FName Socket )
 		, EAttachmentRule::SnapToTarget
 		,true);
 
-	m_IteamMesh->AttachToComponent(Component, AttachRules, Socket);
-	m_SphereCollision->AttachToComponent(Component, AttachRules, Socket);
+	//m_IteamMesh->AttachToComponent(Component, AttachRules, Socket);
+
+	
+	//m_SphereCollision->AttachToComponent(Component, AttachRules, Socket);
 	return this;
 }
 

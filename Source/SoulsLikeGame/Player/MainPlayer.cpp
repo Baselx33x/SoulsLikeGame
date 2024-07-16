@@ -114,7 +114,7 @@ void AMainPlayer::PickUp()
 		AIteam* Iteam = m_Iteams[0];
 		if (Iteam)
 		{
-			Iteam->GetSphereCollision()->SetSimulatePhysics(true);
+			Iteam->GetIteamMesh()->SetSimulatePhysics(true);
 			
 		}
 	
@@ -132,7 +132,7 @@ void AMainPlayer::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor*
 
 	if (Pickable)
 	{
-		AIteam* Iteam = Pickable->PickUP( GetMesh() , "RightHandSocket");
+		AIteam* Iteam = Pickable->PickUP( this->GetMesh() , "RightHandSocket");
 
 		m_Iteams.Add(Iteam);
 	}
