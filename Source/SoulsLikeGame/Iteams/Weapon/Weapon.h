@@ -7,11 +7,23 @@
 #include "Weapon.generated.h"
 
 class UBoxComponent; 
+class USceneComponent;
 
 UCLASS()
 class SOULSLIKEGAME_API AWeapon : public AIteam , public IIPickable
 {
 	GENERATED_BODY()
+	
+
+
+public: 
+
+	AWeapon();
+	
+
+	FORCEINLINE UBoxComponent* GetWeaponCollision() const {
+		return m_BoxWeaponCollision;
+	}
 	
 
 protected:
@@ -21,13 +33,22 @@ protected:
 	// Inherited via IIPickable
 	 AIteam* PickUP(USceneComponent* Component, FName Socket)override;
 
+	 UFUNCTION(BlueprintCallable)
+	 virtual void OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent
+	 , AActor* OtherActor
+	 , UPrimitiveComponent* OtherComp
+	 , int32 OtherBodyIndex
+	 , bool bFromSweep
+	 , const FHitResult& SweepResult
+	 );
+
 protected:
 
 	UPROPERTY(VisibleAnywhere)
 	UBoxComponent* m_BoxWeaponCollision = nullptr; 
 
-	
-
-	
-
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* m_StartBoxTrace = nullptr;
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* m_EndBoxTrace = nullptr;
 };
