@@ -49,7 +49,7 @@ void AIteam::Init()
 {
 
 	m_IteamMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("IteamMesh"));
-	m_IteamMesh->SetupAttachment(RootComponent);
+	SetRootComponent(m_IteamMesh); 
 
 	m_SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("SphereCollision"));
 	m_SphereCollision->SetupAttachment(m_IteamMesh);

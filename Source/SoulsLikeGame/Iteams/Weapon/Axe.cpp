@@ -2,6 +2,7 @@
 #include "Axe.h"
 #include "Components/SphereComponent.h"
 
+
 void AAxe::BeginOverlap(UPrimitiveComponent* OverlappedComponent
 	, AActor* OtherActor
 	, UPrimitiveComponent* OtherComp
@@ -41,7 +42,7 @@ AIteam* AAxe::PickUP(USceneComponent* Component, FName Socket )
 		, EAttachmentRule::SnapToTarget
 		,true);
 
-	//m_IteamMesh->AttachToComponent(Component, AttachRules, Socket);
+	m_IteamMesh->AttachToComponent(Component, AttachRules, Socket);
 
 	
 	//m_SphereCollision->AttachToComponent(Component, AttachRules, Socket);

@@ -9,7 +9,7 @@ UCLASS()
 class SOULSLIKEGAME_API AAxe : public AWeapon
 {
 	GENERATED_BODY()
-	
+
 
 	virtual void BeginOverlap(UPrimitiveComponent* OverlappedComponent
 		, AActor* OtherActor
