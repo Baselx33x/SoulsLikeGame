@@ -3,8 +3,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "SoulsLikeGame/Enums/PlayerEnums.h"
 #include "MainPlayer.generated.h"
-
 
 	class USpringArmComponent; 
 	class UCameraComponent;
@@ -45,13 +45,19 @@ protected :
 		, bool bFromSweep
 		, const FHitResult& SweepResult);
 
+private:
+	void InitVariables();
+	FVector GetLookDirection(EAxis::Type Axis);
+
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly , Category = "Initialization")
 	TArray< AIteam* > m_Iteams;
 
-private : 
-	void InitVariables();
-	FVector GetLookDirection(EAxis::Type Axis);
+protected:
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Enums")	
+	PlayerWeaponState m_PlayerWeaponState = PlayerWeaponState::PWS_Unequipped; 
+
 private : 
 
 	UPROPERTY(VisibleDefaultsOnly , Category = "Camera")
