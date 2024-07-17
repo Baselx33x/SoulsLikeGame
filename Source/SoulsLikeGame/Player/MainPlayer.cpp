@@ -115,6 +115,8 @@ void AMainPlayer::PickUp()
 		if (Iteam)
 		{
 			Iteam->GetIteamMesh()->SetSimulatePhysics(true);
+			Iteam->GetIteamMesh()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+
 			
 		}
 	
