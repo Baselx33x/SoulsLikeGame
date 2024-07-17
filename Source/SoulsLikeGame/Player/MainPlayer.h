@@ -34,6 +34,9 @@ protected :
 	void PickUp();
 
 	UFUNCTION(BlueprintCallable)
+	void Attack(); 
+
+	UFUNCTION(BlueprintCallable)
 
 	virtual void BeginOverlap(UPrimitiveComponent* OverlappedComponent
 		, AActor* OtherActor

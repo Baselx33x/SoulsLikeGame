@@ -63,6 +63,7 @@ void AMainPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction(TEXT("PichUp"), EInputEvent::IE_Pressed, this, &AMainPlayer::PickUp);
+	PlayerInputComponent->BindAction(TEXT("Attack"), EInputEvent::IE_Pressed, this, &AMainPlayer::Attack);
 
 
 }
@@ -126,6 +127,14 @@ void AMainPlayer::PickUp()
 	}
 
 
+}
+
+void AMainPlayer::Attack()
+{
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Attacking !!!!");
+	}
 }
 
 void AMainPlayer::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
