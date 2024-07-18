@@ -40,6 +40,7 @@ protected:
 	 , const FHitResult& SweepResult
 	 );
  
+	 FHitResult BoxHitTraceResult(const UObject* WorldContextObject, FVector Start, FVector End, FRotator Rotation);
 
 protected:
 

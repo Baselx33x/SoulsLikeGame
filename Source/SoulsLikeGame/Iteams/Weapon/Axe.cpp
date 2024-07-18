@@ -33,7 +33,7 @@ void AAxe::EndOverLap(UPrimitiveComponent* OverlappedComponent
 void AAxe::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 
-	const FVector Start = m_StartBoxTrace->GetComponentLocation();
+	/*const FVector Start = m_StartBoxTrace->GetComponentLocation();
 	const FVector End = m_EndBoxTrace->GetComponentLocation();
 	TArray<AActor*> m_ActorsToIgnore;
 	m_ActorsToIgnore.Add(this);
@@ -52,7 +52,9 @@ void AAxe::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* O
 		, true
 		, FLinearColor::Red
 		, FLinearColor::Green
-		, 5.0f);
+		, 5.0f);*/
+
+	FHitResult Hit = BoxHitTraceResult(this, m_StartBoxTrace->GetComponentLocation(), m_EndBoxTrace->GetComponentLocation(), m_StartBoxTrace->GetComponentRotation());
 
 	DrawDebugSphere(GetWorld(), (Hit.ImpactPoint), 5.0f, 32, FColor::Yellow, false, 5.0f);
 
