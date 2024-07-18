@@ -2,6 +2,7 @@
 #include "Weapon.h"
 #include "Components/BoxComponent.h"
 
+
 AWeapon::AWeapon()
 {
 
@@ -28,3 +29,4 @@ AIteam* AWeapon::PickUP(USceneComponent* Component, FName Socket)
 void AWeapon::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 }
+

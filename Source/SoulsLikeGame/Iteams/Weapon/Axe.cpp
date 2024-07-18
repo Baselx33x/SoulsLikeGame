@@ -32,30 +32,36 @@ void AAxe::EndOverLap(UPrimitiveComponent* OverlappedComponent
 
 void AAxe::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+
 	const FVector Start = m_StartBoxTrace->GetComponentLocation();
 	const FVector End = m_EndBoxTrace->GetComponentLocation();
 	TArray<AActor*> m_ActorsToIgnore;
 	m_ActorsToIgnore.Add(this);
 	FHitResult Hit;
+
 	UKismetSystemLibrary::BoxTraceSingle(this
-										,Start
-										,End
-										,FVector(5.0f, 5.0f, 5.0f)
-										,FRotator(0.0f, 0.0f, 0.0f)
-										, ETraceTypeQuery::TraceTypeQuery1
-										, false
-										, m_ActorsToIgnore
-										, EDrawDebugTrace::ForDuration
-										, Hit
-										, true
-										, FLinearColor::Red
-										, FLinearColor::Green
-										, 5.0f);
+		, Start
+		, End
+		, FVector(5.0f, 5.0f, 5.0f)
+		, m_StartBoxTrace->GetComponentRotation()
+		, ETraceTypeQuery::TraceTypeQuery1
+		, false
+		, m_ActorsToIgnore
+		, EDrawDebugTrace::ForDuration
+		, Hit
+		, true
+		, FLinearColor::Red
+		, FLinearColor::Green
+		, 5.0f);
 
+	DrawDebugSphere(GetWorld(), (Hit.ImpactPoint), 5.0f, 32, FColor::Yellow, false, 5.0f);
 
+	//if (GEngine)
+	//{
+	//	FString HitName = Hit.GetActor()->GetName();
+	//	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, HitName);
+	//}
 	
-	DrawDebugSphere(GetWorld(), Hit.ImpactPoint, 5.0f, 32, FColor::Yellow, false, 5.0f);
-
 }
 
 AIteam* AAxe::PickUP(USceneComponent* Component, FName Socket )
@@ -78,4 +84,6 @@ AIteam* AAxe::PickUP(USceneComponent* Component, FName Socket )
 	//m_SphereCollision->AttachToComponent(Component, AttachRules, Socket);
 	return this;
 }
+
+
 

@@ -27,8 +27,6 @@ public:
 	
 
 protected:
-	 bool m_B_IsCollided = false;
-
 
 	// Inherited via IIPickable
 	 AIteam* PickUP(USceneComponent* Component, FName Socket)override;
@@ -41,8 +39,11 @@ protected:
 	 , bool bFromSweep
 	 , const FHitResult& SweepResult
 	 );
+ 
 
 protected:
+
+	bool m_B_IsCollided = false;
 
 	UPROPERTY(VisibleAnywhere)
 	UBoxComponent* m_BoxWeaponCollision = nullptr; 
