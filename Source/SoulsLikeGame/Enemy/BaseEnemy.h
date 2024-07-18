@@ -3,12 +3,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "SoulsLikeGame/Interfaces/GetHit.h"
 #include "BaseEnemy.generated.h"
 
 class UAnimMontage; 
 
 UCLASS()
-class SOULSLIKEGAME_API ABaseEnemy : public ACharacter
+class SOULSLIKEGAME_API ABaseEnemy : public ACharacter , public IGetHit
 {
 	GENERATED_BODY()
 
@@ -25,6 +26,9 @@ protected:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	// Inherited via IGetHit
+	ABaseEnemy* GetHit(const FVector& HitPostion) override;
+
 private: 
 	void Init(); 
 
@@ -36,6 +40,7 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Montages")
 	UAnimMontage* m_GetHitMontage= nullptr;
+
 
 
 };

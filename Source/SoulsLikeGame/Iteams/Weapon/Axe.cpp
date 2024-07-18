@@ -2,6 +2,7 @@
 #include "Axe.h"
 #include "Components/SphereComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "SoulsLikeGame/Interfaces/GetHit.h"
 
 void AAxe::BeginOverlap(UPrimitiveComponent* OverlappedComponent
 	, AActor* OtherActor
@@ -61,6 +62,12 @@ void AAxe::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* O
 	FHitResult Hit = BoxHitTraceResult(this, m_StartBoxTrace->GetComponentLocation(), m_EndBoxTrace->GetComponentLocation(), m_StartBoxTrace->GetComponentRotation());
 
 	DrawDebugSphere(GetWorld(), (Hit.ImpactPoint), 5.0f, 32, FColor::Yellow, false, 5.0f);
+
+	IGetHit* GetHit = Cast<IGetHit>(Hit.GetActor());
+	if (GetHit)
+	{
+		GetHit->GetHit(Hit.ImpactPoint);
+	}
 
 	//if (GEngine)
 	//{

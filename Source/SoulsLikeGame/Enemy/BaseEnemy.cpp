@@ -36,3 +36,8 @@ void ABaseEnemy::Init()
 	m_AnimInstance = GetMesh()->GetAnimInstance();
 }
 
+ABaseEnemy* ABaseEnemy::GetHit(const FVector& HitPostion)
+{
+	return nullptr;
+}
+
