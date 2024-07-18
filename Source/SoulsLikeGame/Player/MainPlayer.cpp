@@ -7,6 +7,8 @@
 #include "Components/CapsuleComponent.h"
 #include "SoulsLikeGame/Iteams/Iteam.h"
 #include "Components/SphereComponent.h"
+#include "SoulsLikeGame/Iteams/Weapon/Weapon.h"
+#include "Components/BoxComponent.h"
 
 
 AMainPlayer::AMainPlayer()
@@ -149,6 +151,24 @@ void AMainPlayer::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor*
 
 		m_Iteams.Add(Iteam);
 	}
+}
+
+void AMainPlayer::EnableBoxCollision()
+{
+	if (m_Iteams.IsEmpty()) return; 
+
+	AWeapon* weapon = Cast<AWeapon>(m_Iteams[0]);
+
+	weapon->GetWeaponCollision()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+}
+
+void AMainPlayer::DisableBoxCollision()
+{
+	if (m_Iteams.IsEmpty()) return;
+
+	AWeapon* weapon = Cast<AWeapon>(m_Iteams[0]);
+
+	weapon->GetWeaponCollision()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
 

@@ -45,6 +45,13 @@ protected :
 		, bool bFromSweep
 		, const FHitResult& SweepResult);
 
+	UFUNCTION(BlueprintCallable)
+	void EnableBoxCollision(); 
+
+	UFUNCTION(BlueprintCallable)
+	void DisableBoxCollision();
+
+
 private:
 	void InitVariables();
 	FVector GetLookDirection(EAxis::Type Axis);

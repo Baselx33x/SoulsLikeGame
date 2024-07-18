@@ -11,6 +11,7 @@ AWeapon::AWeapon()
 	m_BoxWeaponCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxWeaponCollision"));
 	m_BoxWeaponCollision->SetupAttachment(RootComponent);
 	m_BoxWeaponCollision->OnComponentBeginOverlap.AddDynamic(this, &AWeapon::OnBeginBoxOverlap);
+	m_BoxWeaponCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	m_StartBoxTrace = CreateDefaultSubobject<USceneComponent>(TEXT("StartBoxTrace"));
 	m_StartBoxTrace->SetupAttachment(RootComponent);
