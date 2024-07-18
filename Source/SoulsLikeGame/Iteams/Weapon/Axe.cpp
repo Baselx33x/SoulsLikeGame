@@ -33,6 +33,7 @@ void AAxe::EndOverLap(UPrimitiveComponent* OverlappedComponent
 void AAxe::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 
+	#pragma region BoxTrace
 	/*const FVector Start = m_StartBoxTrace->GetComponentLocation();
 	const FVector End = m_EndBoxTrace->GetComponentLocation();
 	TArray<AActor*> m_ActorsToIgnore;
@@ -53,6 +54,9 @@ void AAxe::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* O
 		, FLinearColor::Red
 		, FLinearColor::Green
 		, 5.0f);*/
+#pragma endregion
+
+	
 
 	FHitResult Hit = BoxHitTraceResult(this, m_StartBoxTrace->GetComponentLocation(), m_EndBoxTrace->GetComponentLocation(), m_StartBoxTrace->GetComponentRotation());
 

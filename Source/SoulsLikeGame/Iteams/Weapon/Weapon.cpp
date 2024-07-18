@@ -47,7 +47,7 @@ FHitResult AWeapon::BoxHitTraceResult(const UObject* WorldContextObject ,FVector
 		, ETraceTypeQuery::TraceTypeQuery1
 		, false
 		, m_ActorsToIgnore
-		, EDrawDebugTrace::ForDuration
+		, EDrawDebugTrace::None
 		, Hit
 		, true
 		, FLinearColor::Red
