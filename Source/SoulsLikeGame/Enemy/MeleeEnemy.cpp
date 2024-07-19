@@ -9,7 +9,7 @@ ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 	if (AnimInstce && m_GetHitMontage)
 	{
 
-		FString SectionToPlay = ""; 
+		FString SectionToPlay = "GetFromHitBack"; 
 
 		const FVector& ForwardVector = GetActorForwardVector();
 		const FVector& Direction = (HitPostion - GetActorLocation()).GetSafeNormal();
