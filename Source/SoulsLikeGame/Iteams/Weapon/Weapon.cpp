@@ -35,8 +35,14 @@ void AWeapon::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor
 FHitResult AWeapon::BoxHitTraceResult(const UObject* WorldContextObject ,FVector Start, FVector End , FRotator Rotation)
 {
 	
-	TArray<AActor*> m_ActorsToIgnore;
-	m_ActorsToIgnore.Add(this);
+	TArray<AActor*> ActorsToIgnore;
+	ActorsToIgnore.Add(this);
+
+	for (size_t i = 0; i < m_ActorsToIgnore.Num(); i++)
+	{
+		ActorsToIgnore.AddUnique(m_ActorsToIgnore[i]);
+	}
+
 	FHitResult Hit;
 
 	UKismetSystemLibrary::BoxTraceSingle(WorldContextObject

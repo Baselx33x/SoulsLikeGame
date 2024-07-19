@@ -169,6 +169,8 @@ void AMainPlayer::DisableBoxCollision()
 	AWeapon* weapon = Cast<AWeapon>(m_Iteams[0]);
 
 	weapon->GetWeaponCollision()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	weapon->m_ActorsToIgnore.Empty();
 }
 
 
