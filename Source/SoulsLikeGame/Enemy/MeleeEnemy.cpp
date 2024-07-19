@@ -19,10 +19,14 @@ ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 		float ClampedDot = FMath::Clamp(Dot, -1.f, 1.f);  
 
 		float Angle = FMath::RadiansToDegrees(FMath::Acos(ClampedDot));
-		float sign = FVector::CrossProduct(ForwardVector, Direction).Z;
-		sign = sign > 0 ? 1 : -1;
+		FVector Cross = FVector::CrossProduct(ForwardVector, Direction);
+
+		if (Cross.Z < 0.f)
+		{
+			Angle *= -1.f; 
+		}
 		
-		Angle *= sign;
+		
 
 		if (Angle < 45.f && Angle > -45.f)
 		{
