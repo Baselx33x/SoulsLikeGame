@@ -29,6 +29,8 @@ protected:
 	// Inherited via IGetHit
 	ABaseEnemy* GetHit(const FVector& HitPostion) override;
 
+	FString GetHitDiraction(UAnimInstance* AnimInstace, const FVector& HitPostion, const FVector& ActorForwardVector, const FVector& ActorLocation);
+
 private: 
 	void Init(); 
 

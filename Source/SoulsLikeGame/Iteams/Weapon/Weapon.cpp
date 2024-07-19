@@ -19,8 +19,7 @@ AWeapon::AWeapon()
 	m_EndBoxTrace = CreateDefaultSubobject<USceneComponent>(TEXT("EndBoxTrace"));
 	m_EndBoxTrace->SetupAttachment(RootComponent);
 
-
-
+	
 }
 
 AIteam* AWeapon::PickUP(USceneComponent* Component, FName Socket)

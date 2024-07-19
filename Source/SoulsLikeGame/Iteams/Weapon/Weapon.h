@@ -41,6 +41,7 @@ protected:
 	 );
  
 	 FHitResult BoxHitTraceResult(const UObject* WorldContextObject, FVector Start, FVector End, FRotator Rotation);
+
 public:
 
 	TArray<AActor*> m_ActorsToIgnore;
