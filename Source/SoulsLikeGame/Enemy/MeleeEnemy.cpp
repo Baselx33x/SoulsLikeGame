@@ -1,5 +1,6 @@
 
 #include "MeleeEnemy.h"
+#include "DrawDebugHelpers.h"
 
 ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 {
@@ -13,8 +14,9 @@ ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 		const FVector& ForwardVector = GetActorForwardVector();
 		const FVector& Direction = (HitPostion - GetActorLocation()).GetSafeNormal();
 
+	
 		float Dot = FVector::DotProduct(ForwardVector, Direction);
-		float ClampedDot = FMath::Clamp(Dot, -1.f, 1.f);
+		float ClampedDot = FMath::Clamp(Dot, -1.f, 1.f);  
 
 		float Angle = FMath::RadiansToDegrees(FMath::Acos(ClampedDot));
 		float sign = FVector::CrossProduct(ForwardVector, Direction).Z;
@@ -24,7 +26,7 @@ ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 
 		if (Angle < 45.f && Angle > -45.f)
 		{
-			SectionToPlay = "GetFromHitFront";
+			SectionToPlay = "GetFromHitFront"; 
 			if (GEngine)
 			{
 				GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Cyan, TEXT("GetFromHitFront"));
@@ -32,7 +34,7 @@ ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 		}
 		else if (Angle < -45.f && Angle > -135.f)
 		{
-			SectionToPlay = "GetFromHitLeft";
+			SectionToPlay = "GetFromHitLeft"; 
 			if (GEngine)
 			{
 				GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Cyan, TEXT("GetFromHitLeft"));
@@ -48,7 +50,7 @@ ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 		}
 		else if (Angle < 135.f && Angle > 45.f)
 		{
-			SectionToPlay = "GetFromHitRight";
+			SectionToPlay = "GetFromHitRight"; 
 			if (GEngine)
 			{
 				GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Cyan, TEXT("GetFromHitRight"));
@@ -59,7 +61,7 @@ ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 
 		if (GEngine)
 		{
-			GEngine->AddOnScreenDebugMessage(1,1.f,FColor::Cyan,TEXT("Geting Hit !"));
+			GEngine->AddOnScreenDebugMessage(1,1.f,FColor::Cyan, FString::Printf ( TEXT("Geting Hit with Angle : %f !" ) , Angle));
 		}
 
 		AnimInstce->Montage_Play(m_GetHitMontage);
