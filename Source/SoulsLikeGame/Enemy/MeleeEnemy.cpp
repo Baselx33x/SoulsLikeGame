@@ -5,8 +5,11 @@
 
 ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 {
+	if (! m_HealthComponent->IsDead())
+	{
+		GetHitDiraction(GetMesh()->GetAnimInstance(), HitPostion, GetActorForwardVector(), GetActorLocation());
+	}
 	
-	GetHitDiraction(GetMesh()->GetAnimInstance(), HitPostion, GetActorForwardVector(), GetActorLocation());
 	
 
 	return this;

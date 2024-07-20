@@ -76,7 +76,7 @@ void AAxe::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* O
 		ABaseEnemy* BaseEnemy = GetHit->GetHit(Hit.ImpactPoint);
 		m_ActorsToIgnore.AddUnique(Hit.GetActor());
 
-		if (BaseEnemy && BaseEnemy->GetHealthComponent())
+		if (BaseEnemy)
 		{
 			BaseEnemy->TakeDamage(m_WeaponDamage,this);
 		}

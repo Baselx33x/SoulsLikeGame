@@ -22,6 +22,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "M_Health")
 	FORCEINLINE float GetMaxHealth() const { return m_MaxHealth; }
 
+
+	UFUNCTION(BlueprintPure, Category = "M_Health")
+	FORCEINLINE bool IsDead() const { return m_Health <= 0.f; }
 	
 	UFUNCTION(BlueprintPure, Category = "M_Health")
 	float HealthPercentage() const { return m_Health / m_MaxHealth; }
@@ -29,7 +32,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "M_Health")
 	void DecreseHealth(float Amount); 
 	
-
+	
 protected:
 	
 	virtual void BeginPlay() override;
