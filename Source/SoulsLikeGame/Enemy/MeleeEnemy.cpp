@@ -5,9 +5,14 @@
 
 ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 {
-	if (! m_HealthComponent->IsDead())
-	{
+	if (! m_HealthComponent->IsDead()){
+	
 		GetHitDiraction(GetMesh()->GetAnimInstance(), HitPostion, GetActorForwardVector(), GetActorLocation());
+	}
+
+	if (m_HealthComponent->IsDead()) {
+
+		Ragdoll(GetMesh(), GetCapsuleComponent());
 	}
 	
 	

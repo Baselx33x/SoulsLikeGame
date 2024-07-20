@@ -1,7 +1,7 @@
 
 #include "BaseEnemy.h"
 #include"SoulsLikeGame/Components/HealthComponent.h"
-
+#include "Components/CapsuleComponent.h"
 
 ABaseEnemy::ABaseEnemy()
 {
@@ -116,6 +116,15 @@ FString ABaseEnemy::GetHitDiraction( UAnimInstance* AnimInstace, const FVector& 
 
 
     return SectionToPlay;
+}
+
+void ABaseEnemy::Ragdoll(USkeletalMeshComponent* EnemyMesh, UCapsuleComponent* EenmyCapsule)
+{
+
+    EnemyMesh->SetSimulatePhysics(true);
+    EnemyMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+    EenmyCapsule->DestroyComponent();
+
 }
 
 float ABaseEnemy::TakeDamage(float damageAmount, AActor* DamageDealr)
