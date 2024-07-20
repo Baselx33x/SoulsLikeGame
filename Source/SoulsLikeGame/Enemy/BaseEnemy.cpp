@@ -118,12 +118,14 @@ FString ABaseEnemy::GetHitDiraction( UAnimInstance* AnimInstace, const FVector& 
     return SectionToPlay;
 }
 
-void ABaseEnemy::Ragdoll(USkeletalMeshComponent* EnemyMesh, UCapsuleComponent* EenmyCapsule)
+void ABaseEnemy::Ragdoll(USkeletalMeshComponent* EnemyMesh, UCapsuleComponent* EenmyCapsule , const float lifeSpan)
 {
 
     EnemyMesh->SetSimulatePhysics(true);
     EnemyMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
     EenmyCapsule->DestroyComponent();
+
+    SetLifeSpan(lifeSpan);
 
 }
 

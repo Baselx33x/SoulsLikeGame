@@ -36,7 +36,7 @@ protected:
 
 	FString GetHitDiraction(UAnimInstance* AnimInstace, const FVector& HitPostion, const FVector& ActorForwardVector, const FVector& ActorLocation);
 
-	void Ragdoll(USkeletalMeshComponent* EnemyMesh, UCapsuleComponent* EenmyCapsule);
+	void Ragdoll(USkeletalMeshComponent* EnemyMesh, UCapsuleComponent* EenmyCapsule, const float lifeSpan);
 private: 
 	void Init(); 
 

@@ -12,7 +12,8 @@ ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 
 	if (m_HealthComponent->IsDead()) {
 
-		Ragdoll(GetMesh(), GetCapsuleComponent());
+		Ragdoll(GetMesh(), GetCapsuleComponent() , 3.0f);
+	
 	}
 	
 	

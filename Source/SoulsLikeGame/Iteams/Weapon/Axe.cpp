@@ -8,7 +8,7 @@
 
 AAxe::AAxe()
 {
-	m_WeaponDamage = 10.0f;
+	m_WeaponDamage = 50.0f;
 }
 
 void AAxe::BeginOverlap(UPrimitiveComponent* OverlappedComponent
