@@ -41,7 +41,7 @@ void ABaseEnemy::Init()
 
 ABaseEnemy* ABaseEnemy::GetHit(const FVector& HitPostion)
 {
-	return nullptr;
+	return this;
 }
 
 FString ABaseEnemy::GetHitDiraction( UAnimInstance* AnimInstace, const FVector& HitPostion, const FVector& ActorForwardVector, const FVector& ActorLocation)
@@ -116,5 +116,10 @@ FString ABaseEnemy::GetHitDiraction( UAnimInstance* AnimInstace, const FVector& 
 
 
     return SectionToPlay;
+}
+
+float ABaseEnemy::TakeDamage(float damageAmount, AActor* DamageDealr)
+{
+    return 0.0f;
 }
 

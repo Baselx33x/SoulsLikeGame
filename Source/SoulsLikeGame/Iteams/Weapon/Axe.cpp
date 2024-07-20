@@ -3,6 +3,13 @@
 #include "Components/SphereComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "SoulsLikeGame/Interfaces/GetHit.h"
+#include "SoulsLikeGame/Enemy/BaseEnemy.h"
+
+
+AAxe::AAxe()
+{
+	m_WeaponDamage = 10.0f;
+}
 
 void AAxe::BeginOverlap(UPrimitiveComponent* OverlappedComponent
 	, AActor* OtherActor
@@ -66,8 +73,14 @@ void AAxe::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* O
 	IGetHit* GetHit = Cast<IGetHit>(Hit.GetActor());
 	if (GetHit)
 	{
-		ABaseEnemy* Enemy = GetHit->GetHit(Hit.ImpactPoint);
+		ABaseEnemy* BaseEnemy = GetHit->GetHit(Hit.ImpactPoint);
 		m_ActorsToIgnore.AddUnique(Hit.GetActor());
+
+		if (BaseEnemy && BaseEnemy->GetHealthComponent())
+		{
+			BaseEnemy->TakeDamage(m_WeaponDamage,this);
+		}
+		
 	}
 
 }

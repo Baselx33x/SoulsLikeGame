@@ -12,5 +12,6 @@ class SOULSLIKEGAME_API AMeleeEnemy : public ABaseEnemy
 
 
 	virtual ABaseEnemy* GetHit(const FVector& HitPostion) override; 
+	virtual float TakeDamage(float damageAmount, AActor* DamageDealr) override;
 	
 };

@@ -11,6 +11,9 @@ class SOULSLIKEGAME_API AAxe : public AWeapon
 	GENERATED_BODY()
 
 
+public:
+	AAxe();
+
 	virtual void BeginOverlap(UPrimitiveComponent* OverlappedComponent
 		, AActor* OtherActor
 		, UPrimitiveComponent* OtherComp

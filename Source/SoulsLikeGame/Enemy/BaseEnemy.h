@@ -17,6 +17,11 @@ public:
 
 	ABaseEnemy();
 
+	FORCEINLINE UHealthComponent* GetHealthComponent() const { return m_HealthComponent; }
+
+	UFUNCTION(BlueprintPure)
+	virtual float TakeDamage(float damageAmount , AActor* DamageDealr);
+
 protected:
 
 	virtual void BeginPlay() override;
@@ -30,7 +35,6 @@ protected:
 	ABaseEnemy* GetHit(const FVector& HitPostion) override;
 
 	FString GetHitDiraction(UAnimInstance* AnimInstace, const FVector& HitPostion, const FVector& ActorForwardVector, const FVector& ActorLocation);
-
 private: 
 	void Init(); 
 

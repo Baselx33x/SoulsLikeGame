@@ -1,6 +1,7 @@
 
 #include "MeleeEnemy.h"
 #include "DrawDebugHelpers.h"
+#include"SoulsLikeGame/Components/HealthComponent.h"
 
 ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 {
@@ -9,4 +10,19 @@ ABaseEnemy* AMeleeEnemy::GetHit(const FVector& HitPostion)
 	
 
 	return this;
+}
+
+float AMeleeEnemy::TakeDamage(float damageAmount, AActor* DamageDealr)
+{
+	if (!m_HealthComponent) return damageAmount;
+
+	m_HealthComponent->DecreseHealth(damageAmount);
+
+	if (GEngine) {
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Emerald, FString::Printf(TEXT("Melee Enemy Health: %f"), m_HealthComponent->GetHealth()));
+	}
+
+
+
+	return damageAmount;
 }

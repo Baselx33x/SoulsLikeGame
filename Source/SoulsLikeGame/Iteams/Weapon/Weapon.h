@@ -59,4 +59,8 @@ protected:
 	USceneComponent* m_StartBoxTrace = nullptr;
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* m_EndBoxTrace = nullptr;
+
+
+	UPROPERTY(EditAnywhere , BlueprintReadWrite , Category = "Weapon Stats")
+	float m_WeaponDamage =5.0f;
 };
