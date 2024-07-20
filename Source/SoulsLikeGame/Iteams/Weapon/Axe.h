@@ -34,7 +34,7 @@ class SOULSLIKEGAME_API AAxe : public AWeapon
 	
 
 	// Inherited via IIPickable
-	AIteam* PickUP(USceneComponent* Component, FName Socket )override;
+	AIteam* PickUP(USceneComponent* Component, FName Socket, AActor* Owner, APawn* Instigatro)override;
 
 
 

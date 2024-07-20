@@ -22,5 +22,5 @@ class SOULSLIKEGAME_API IIPickable
 
 public:
 
-	virtual AIteam* PickUP(USceneComponent* Component , FName Socket ) = 0;
+	virtual AIteam* PickUP(USceneComponent* Component , FName Socket , AActor* Owner , APawn * Instigatro) = 0;
 };

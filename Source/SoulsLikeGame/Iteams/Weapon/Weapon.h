@@ -29,7 +29,7 @@ public:
 protected:
 
 	// Inherited via IIPickable
-	 AIteam* PickUP(USceneComponent* Component, FName Socket)override;
+	 AIteam* PickUP(USceneComponent* Component, FName Socket, AActor* Owner, APawn* Instigatro)override;
 
 	 UFUNCTION(BlueprintCallable)
 	 virtual void OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent

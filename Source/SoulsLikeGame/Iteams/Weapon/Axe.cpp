@@ -70,32 +70,26 @@ void AAxe::OnBeginBoxOverlap(UPrimitiveComponent* OverlappedComponent, AActor* O
 		m_ActorsToIgnore.AddUnique(Hit.GetActor());
 	}
 
-	//if (GEngine)
-	//{
-	//	FString HitName = Hit.GetActor()->GetName();
-	//	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, HitName);
-	//}
-	
 }
 
-AIteam* AAxe::PickUP(USceneComponent* Component, FName Socket )
+AIteam* AAxe::PickUP(USceneComponent* Component, FName Socket, AActor* ActorOwner, APawn* Instigatro)
 {
 
-	/*if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, TEXT(" Axe PickUP"));
-	}*/
+	// Set the owner of the item
+	SetOwner(ActorOwner);
 
+	// Set the instigator of the item
+	SetInstigator(Instigatro);
 
+	// Define attachment rules for attaching the item mesh to a component
 	FAttachmentTransformRules AttachRules(EAttachmentRule::SnapToTarget
 		, EAttachmentRule::SnapToTarget
 		, EAttachmentRule::SnapToTarget
-		,true);
+		, true);
 
+	// Attach the item mesh to the specified component using the defined attachment rules and socket
 	m_IteamMesh->AttachToComponent(Component, AttachRules, Socket);
 
-	
-	//m_SphereCollision->AttachToComponent(Component, AttachRules, Socket);
 	return this;
 }
 

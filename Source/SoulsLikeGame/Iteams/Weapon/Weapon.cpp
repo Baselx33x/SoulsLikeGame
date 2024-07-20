@@ -22,7 +22,7 @@ AWeapon::AWeapon()
 	
 }
 
-AIteam* AWeapon::PickUP(USceneComponent* Component, FName Socket)
+AIteam* AWeapon::PickUP(USceneComponent* Component, FName Socket, AActor* ActorOwner, APawn* Instigatro)
 {
 	return this;
 }

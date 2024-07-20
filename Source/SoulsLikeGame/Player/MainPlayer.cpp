@@ -147,7 +147,7 @@ void AMainPlayer::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor*
 	{
 		m_PlayerWeaponState = PlayerWeaponState::PWS_Equipped;
 
-		AIteam* Iteam = Pickable->PickUP( this->GetMesh() , "RightHandSocket");
+		AIteam* Iteam = Pickable->PickUP( this->GetMesh() , "RightHandSocket" , this , this);
 
 		m_Iteams.Add(Iteam);
 	}
