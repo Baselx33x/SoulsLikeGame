@@ -7,7 +7,7 @@
 #include "BaseEnemy.generated.h"
 
 class UAnimMontage; 
-
+class UHealthComponent; 
 UCLASS()
 class SOULSLIKEGAME_API ABaseEnemy : public ACharacter , public IGetHit
 {
@@ -43,6 +43,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Montages")
 	UAnimMontage* m_GetHitMontage= nullptr;
 
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "M_Health")
+	UHealthComponent * m_HealthComponent = nullptr;
 
 };

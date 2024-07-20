@@ -1,5 +1,6 @@
 
 #include "BaseEnemy.h"
+#include"SoulsLikeGame/Components/HealthComponent.h"
 
 
 ABaseEnemy::ABaseEnemy()
@@ -34,6 +35,8 @@ void ABaseEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 void ABaseEnemy::Init()
 {
 	m_AnimInstance = GetMesh()->GetAnimInstance();
+
+    m_HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 }
 
 ABaseEnemy* ABaseEnemy::GetHit(const FVector& HitPostion)
