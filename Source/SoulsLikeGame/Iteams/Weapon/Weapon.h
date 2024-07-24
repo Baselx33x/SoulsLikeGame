@@ -49,16 +49,18 @@ public:
 protected:
 
 
-
 	bool m_B_IsCollided = false;
 
 	UPROPERTY(VisibleAnywhere)
-	UBoxComponent* m_BoxWeaponCollision = nullptr; 
+	UBoxComponent* m_BoxWeaponCollision = nullptr;  
 
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* m_StartBoxTrace = nullptr;
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* m_EndBoxTrace = nullptr;
+
+	UPROPERTY(EditAnywhere , BlueprintReadWrite , Category = "Weapon Stats")
+	FString m_WeaponTag = "Weapon";
 
 
 	UPROPERTY(EditAnywhere , BlueprintReadWrite , Category = "Weapon Stats")
